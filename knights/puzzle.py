@@ -11,11 +11,11 @@ CKnave = Symbol("C is a Knave")
 
 
 
-# Puzzle 0
+# Puzzle 0 ∧ ¬
 # A says "I am both a knight and a knave."
 knowledge0 = And(
-    AKnight => Symbol,
-    AKnave
+    AKnight => Sentence(Symbol),
+    AKnave => ¬Sentence(Symbol)
 
 )
 
