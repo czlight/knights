@@ -19,8 +19,10 @@ knowledge0 = And(
 
     Implication(AKnight, Statement0),
     Implication(AKnave, Not(Statement0)),
-    And(AKnight, AKnave)
-
+    Or(
+        And(AKnave, Not(AKnight)),
+        And(not(AKnave), AKnight)
+    )
 
 )
 
