@@ -63,6 +63,8 @@ def main():
             print("    Not yet implemented.")
         else:
             for symbol in symbols:
+                print("symbol:", symbol)
+                print("symbols", symbols)
                 if model_check(knowledge, symbol):
                     print(f"    {symbol}")
 
