@@ -61,6 +61,7 @@ def main():
     j = 0
     for puzzle, knowledge in puzzles:
         print("first for i is:", i)
+        print("knowledge is: ", knowledge)
         i+=1
         print(puzzle)
         if len(knowledge.conjuncts) == 0:
