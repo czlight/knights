@@ -9,10 +9,20 @@ BKnave = Symbol("B is a Knave")
 CKnight = Symbol("C is a Knight")
 CKnave = Symbol("C is a Knave")
 
+
+
 # Puzzle 0
 # A says "I am both a knight and a knave."
+Statement0 = Symbol("I am both a knight and a knave")
+
 knowledge0 = And(
-    # TODO
+    Implication(AKnight, Statement0),
+    Implication(AKnave, Not(Statement0)),
+    Or(
+        And(AKnight, Not(AKnave)),
+        And(Not(AKnight), AKnave)
+    ),
+    Statement0
 )
 
 # Puzzle 1
