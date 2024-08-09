@@ -21,8 +21,8 @@ knowledge0 = And(
     Or(
         And(AKnight, Not(AKnave)),
         And(Not(AKnight), AKnave)
-    )
-
+    ),
+    Statement0
 )
 
 # Puzzle 1
