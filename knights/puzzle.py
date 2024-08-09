@@ -16,14 +16,12 @@ CKnave = Symbol("C is a Knave")
 Statement0 = Symbol("I am both a knight and a knave")
 
 knowledge0 = And(
-
     Implication(AKnight, Statement0),
     Implication(AKnave, Not(Statement0)),
     Or(
         And(AKnave, Not(AKnight)),
-        And(not(AKnave), AKnight)
+        And(Not(AKnave), AKnight)
     )
-
 )
 
 # Puzzle 1
