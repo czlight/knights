@@ -19,10 +19,10 @@ A_says_knight = AKnight
 A_says_knave_and_knight = And(AKnight, AKnave)
 
 knowledge0 = And(
-    Or(AKnight, AKnave),
-    Not(And(AKnight, AKnave)),
-    Implication(AKnight, A_says_knight),
-    Implication(A_says_knave_and_knight, AKnave)
+    Implication(AKnight, A_says_knave_and_knight), # If A is a Knight, the sentence he says is true
+    Implication(AKnave, Not(A_says_knave_and_knight)),
+    Or(AKnight, AKnave), # A is a Knight or A is a Knave
+    Not(And(AKnight, AKnave)), # A cannot be both a Knight and a Knave
 
 )
 
