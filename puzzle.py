@@ -14,17 +14,23 @@ CKnave = Symbol("C is a Knave")
 # Puzzle 0
 # A says "I am both a knight and a knave."
 Statement0 = And(AKnight, AKnave)
+
+A_says_knight = AKnight
+A_says_knave_and_knight = And(AKnight, AKnave)
+
 knowledge0 = And(
+    Or(AKnight, AKnave),
     Not(And(AKnight, AKnave)),
-    Implication(AKnight, Statement0),
-    Implication(AKnave, Not(Statement0)),
-    Implication(Statement0, AKnave)
+    Implication(AKnight, A_says_knight),
+    Implication(A_says_knave_and_knight, AKnave)
+
 )
 
 # Puzzle 1
 # A says "We are both knaves."
 # B says nothing.
 knowledge1 = And(
+    Statement0
     # TODO
 )
 
@@ -56,18 +62,16 @@ def main():
     i = 0
     j = 0
     for puzzle, knowledge in puzzles:
-        print("first for i is:", i)
+
         print("knowledge is: ", knowledge)
-        i+=1
+        print("formula:", knowledge.formula())
         print(puzzle)
         if len(knowledge.conjuncts) == 0:
             print("    Not yet implemented.")
         else:
             for symbol in symbols:
-                print("second for, j is: ", j)
                 print("symbol:", symbol)
                 print("symbols", symbols)
-                j+=1
                 if model_check(knowledge, symbol):
                     print("model check is true")
                     print(f"    {symbol}")
