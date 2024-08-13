@@ -92,23 +92,16 @@ def main():
         ("Puzzle 2", knowledge2),
         ("Puzzle 3", knowledge3)
     ]
-    i = 0
-    j = 0
+
     for puzzle, knowledge in puzzles:
 
-        print("knowledge is: ", knowledge)
-        print("formula:", knowledge.formula())
-        print(puzzle)
         if len(knowledge.conjuncts) == 0:
             print("    Not yet implemented.")
         else:
             for symbol in symbols:
-                print("symbol:", symbol)
-                print("symbols", symbols)
-                if model_check(knowledge, symbol):
-                    print("model check is true")
-                    print(f"    {symbol}")
 
+                if model_check(knowledge, symbol):
+                    print(f"    {symbol}")
 
 if __name__ == "__main__":
     main()
