@@ -61,8 +61,26 @@ knowledge2 = And(
 # B says "A said 'I am a knave'."
 # B says "C is a knave."
 # C says "A is a knight."
+
+A_says_knight_or_knave = Or(AKnight, AKnave)
+A_says_knave = AKnave
+
+
 knowledge3 = And(
-    # TODO
+    Or(AKnight, AKnave), # A is a Knight or A is a Knave
+    Not(And(AKnight, AKnave)), # A cannot be both a Knight and a Knave
+    Or(BKnight, BKnave), # A is a Knight or A is a Knave
+    Not(And(BKnight, BKnave)), # A cannot be both a Knight and a Knave
+    Or(CKnight, CKnave), # A is a Knight or A is a Knave
+    Not(And(CKnight, CKnave)), # A cannot be both a Knight and a Knave
+    Implication(BKnight, A_says_knave),
+    Implication(BKnave, Not(A_says_knave)),
+    Implication(AKnight, A_says_knight_or_knave),
+    Implication(AKnave, Not(A_says_knight_or_knave)),
+    Implication(BKnight, CKnave),
+    Implication(BKnave, Not(CKnave)),
+    Implication(CKnight, AKnight),
+    Implication(CKnave, Not(AKnight))
 )
 
 
