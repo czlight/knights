@@ -26,10 +26,9 @@ knowledge0 = And(
 # A says "We are both knaves."
 # B says nothing.
 A_says_both_knaves = And(AKnave, BKnave)
-B_says_nothing = True
 
 knowledge1 = And(
-    #B_says_nothing,
+
     Or(AKnight, AKnave), # A is a Knight or A is a Knave
     Not(And(AKnight, AKnave)), # A cannot be both a Knight and a Knave
     Or(BKnight, BKnave), # A is a Knight or A is a Knave
@@ -42,8 +41,19 @@ knowledge1 = And(
 # Puzzle 2
 # A says "We are the same kind."
 # B says "We are of different kinds."
+A_says_same = Or(And(AKnight, BKnight), And(AKnave, BKnave))
+B_says_different = Or(And(AKnight, BKnave), And(AKnave, BKnight))
+
 knowledge2 = And(
-    # TODO
+    Or(AKnight, AKnave), # A is a Knight or A is a Knave
+    Not(And(AKnight, AKnave)), # A cannot be both a Knight and a Knave
+    Or(BKnight, BKnave), # A is a Knight or A is a Knave
+    Not(And(BKnight, BKnave)), # A cannot be both a Knight and a Knave
+    Implication(AKnight, A_says_same),
+    Implication(AKnave, Not(A_says_same)),
+    Implication(BKnight, B_says_different),
+    Implication(BKnave, Not(B_says_different))
+
 )
 
 # Puzzle 3
