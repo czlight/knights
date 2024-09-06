@@ -12,14 +12,13 @@ CKnave = Symbol("C is a Knave")
 
 # Puzzle 0
 # A says "I am both a knight and a knave."
-A_says_knave_and_knight = And(AKnight, AKnave)  # A says statement: I am both a Knight and a Knave
+A_says_knave_and_knight = And(AKnight, AKnave) # A says statement: I am both a Knight and a Knave
 
 knowledge0 = And(
-    Implication(AKnight, A_says_knave_and_knight),  # If A is a Knight, the sentence he says is true
-    # If A is a Knave, the sentence they say is false
-    Implication(AKnave, Not(A_says_knave_and_knight)),
-    Or(AKnight, AKnave),  # A is a Knight or A is a Knave
-    Not(And(AKnight, AKnave)),  # A cannot be both a Knight and a Knave
+    Implication(AKnight, A_says_knave_and_knight), # If A is a Knight, the sentence he says is true
+    Implication(AKnave, Not(A_says_knave_and_knight)), # If A is a Knave, the sentence they say is false
+    Or(AKnight, AKnave), # A is a Knight or A is a Knave
+    Not(And(AKnight, AKnave)), # A cannot be both a Knight and a Knave
 
 )
 
@@ -30,10 +29,10 @@ A_says_both_knaves = And(AKnave, BKnave)
 
 knowledge1 = And(
 
-    Or(AKnight, AKnave),  # A is a Knight or A is a Knave
-    Not(And(AKnight, AKnave)),  # A cannot be both a Knight and a Knave
-    Or(BKnight, BKnave),  # A is a Knight or A is a Knave
-    Not(And(BKnight, BKnave)),  # A cannot be both a Knight and a Knave
+    Or(AKnight, AKnave), # A is a Knight or A is a Knave
+    Not(And(AKnight, AKnave)), # A cannot be both a Knight and a Knave
+    Or(BKnight, BKnave), # A is a Knight or A is a Knave
+    Not(And(BKnight, BKnave)), # A cannot be both a Knight and a Knave
     Implication(AKnight, A_says_both_knaves),
     Implication(AKnave, Not(A_says_both_knaves))
 
@@ -46,10 +45,10 @@ A_says_same = Or(And(AKnight, BKnight), And(AKnave, BKnave))
 B_says_different = Or(And(AKnight, BKnave), And(AKnave, BKnight))
 
 knowledge2 = And(
-    Or(AKnight, AKnave),  # A is a Knight or A is a Knave
-    Not(And(AKnight, AKnave)),  # A cannot be both a Knight and a Knave
-    Or(BKnight, BKnave),  # A is a Knight or A is a Knave
-    Not(And(BKnight, BKnave)),  # A cannot be both a Knight and a Knave
+    Or(AKnight, AKnave), # A is a Knight or A is a Knave
+    Not(And(AKnight, AKnave)), # A cannot be both a Knight and a Knave
+    Or(BKnight, BKnave), # A is a Knight or A is a Knave
+    Not(And(BKnight, BKnave)), # A cannot be both a Knight and a Knave
     Implication(AKnight, A_says_same),
     Implication(AKnave, Not(A_says_same)),
     Implication(BKnight, B_says_different),
@@ -68,12 +67,12 @@ A_says_knave = AKnave
 
 
 knowledge3 = And(
-    Or(AKnight, AKnave),  # A is a Knight or A is a Knave
-    Not(And(AKnight, AKnave)),  # A cannot be both a Knight and a Knave
-    Or(BKnight, BKnave),  # A is a Knight or A is a Knave
-    Not(And(BKnight, BKnave)),  # A cannot be both a Knight and a Knave
-    Or(CKnight, CKnave),  # A is a Knight or A is a Knave
-    Not(And(CKnight, CKnave)),  # A cannot be both a Knight and a Knave
+    Or(AKnight, AKnave), # A is a Knight or A is a Knave
+    Not(And(AKnight, AKnave)), # A cannot be both a Knight and a Knave
+    Or(BKnight, BKnave), # A is a Knight or A is a Knave
+    Not(And(BKnight, BKnave)), # A cannot be both a Knight and a Knave
+    Or(CKnight, CKnave), # A is a Knight or A is a Knave
+    Not(And(CKnight, CKnave)), # A cannot be both a Knight and a Knave
     Implication(BKnight, A_says_knave),
     Implication(BKnave, Not(A_says_knave)),
     Implication(AKnight, A_says_knight_or_knave),
@@ -103,7 +102,6 @@ def main():
 
                 if model_check(knowledge, symbol):
                     print(f"    {symbol}")
-
 
 if __name__ == "__main__":
     main()
